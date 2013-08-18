@@ -1,0 +1,10 @@
+[user]
+	name = Josh Guffin
+	email = josh.guffin@gmail.com
+
+[core]
+	editor = vi
+	pager = less
+	excludesfile = /home/guffin/.gitexcludes
+[color]
+	ui = true

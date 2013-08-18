@@ -1,0 +1,12 @@
+./configure                                \
+   --prefix=/opt/vim                       \
+   --with-features=huge                    \
+   --enable-pythoninterp                   \
+   --enable-python3interp                  \
+   --enable-cscope                         \
+   --enable-tclinterp                      \
+   --enable-multibyte                      \
+   --with-compiledby=josh.guffin@gmail.com \
+   --enable-fontset                        \
+   --enable-gui=gtk2
+make
