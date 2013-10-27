@@ -1,2 +1,4 @@
 vim/view
+vim/bundle
 vim/.netrwhist
+vim/autoload/pathogen.vim

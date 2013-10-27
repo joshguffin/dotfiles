@@ -1,5 +1,26 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+" required for Vundle
+Bundle 'gmarik/vundle'
+
+Bundle 'pangloss/vim-javascript'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'scrooloose/syntastic'
+
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+
 filetype plugin on
 filetype indent on
+
+call pathogen#infect()
 
 set grepprg=grep\ -nH\ $*
 
@@ -13,7 +34,7 @@ set novisualbell          " visual bell instead of beeping
 set ruler                 " don't show a ruler
 set hlsearch              " don't highlight all search results
 set nostartofline backspace=2
-set nocompatible timeout timeoutlen=6000 ttimeoutlen=2000
+set timeout timeoutlen=6000 ttimeoutlen=2000
 set listchars=trail:-,tab:>-
 set mouse=a
 set shell=bash
@@ -164,6 +185,7 @@ set tw=80
 set nospell
 set number
 
+let g:syntastic_check_on_open=1
 
 
 map   <silent> <F2>    :TlistToggle<CR>

@@ -12,6 +12,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
+## Ignore setup.sh
 cd $DIR
 RESOURCES=`/bin/ls | sed 's/setup.sh//'`
 
@@ -19,7 +20,7 @@ RESULT="Source Target"
 for resource in $RESOURCES;
 do
    FILEPATH=$DIR/$resource
-   if [ ! -e $FILEPATH ]; then 
+   if [ ! -e $FILEPATH ]; then
       echo "Resource $FILEPATH not available!"
       exit 1
    fi
@@ -32,3 +33,28 @@ done
 
 /bin/echo -e $RESULT | column -t -s' '
 /bin/echo -e "\nFinished linking files!"
+
+mkdir -p $HOME/.vim/autoload
+mkdir -p $HOME/.vim/bundle;
+
+## Install vundle
+if [ ! -e $HOME/.vim/bundle/vundle ]; then
+   git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+fi
+
+## set up configured vundles
+vim +BundleInstall +qall
+
+## Install pathogen
+if [ ! -e $HOME/.vim/autoload/pathogen.vim ]; then
+curl -so ~/.vim/autoload/pathogen.vim \
+    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+fi
+
+## Install syntastic
+if [ ! -e $HOME/.vim/bundle/syntastic ]; then
+   git clone https://github.com/scrooloose/syntastic.git \
+      $HOME/.vim/bundle/syntastic
+fi
+
+
