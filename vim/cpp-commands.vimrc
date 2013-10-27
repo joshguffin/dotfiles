@@ -39,17 +39,19 @@ endif
 
 set tags=$CPPROOT/ctags
 
-Rainbow (
-exe "so ".fnameescape(substitute(&rtp,',.*$','',''))."/after/syntax/c/rainbow.vvim"
+"Rainbow (
+"exe "so ".fnameescape(substitute(&rtp,',.*$','',''))."/after/syntax/c/rainbow.vvim"
 
 map ,h :call HeaderSourceSwap()<CR>
 
-if has('cscope')
+if has('cscope') && !exists("g:did_load_cscope")
   set cscopetag cscopeverbose
 
   if has('quickfix')
     set cscopequickfix=s-,c-,d-,i-,t-,e-
   endif
+
+   let g:did_load_cscope = 1
 
   cnoreabbrev csa cs add
   cnoreabbrev csf cs find
@@ -57,6 +59,8 @@ if has('cscope')
   cnoreabbrev csr cs reset
   cnoreabbrev css cs show
   cnoreabbrev csh cs help
+
+  set nocscopeverbose
 
   if filereadable("$CPPROOT/cscope.out")
      cs add $CPPROOT/cscope.out
@@ -69,28 +73,3 @@ if has('ctags')
    map <C-LeftMouse> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
    map <C-RightMouse> <C-t>
 endif
-
-fun! HeaderSourceSwap()
-   let extension = expand("%:e")
-   let root = expand("%:r")
-   let alternate = ""
-   let isHeader = 0
-
-   let save_spr = &splitright
-
-   " Get the correct extension
-   if extension == "cpp" || extension == "ch"
-      let alternate = root . ".h"
-      set splitright
-   else
-      let alternate = root . ".ch"
-      if !filereadable(alternate)
-         let alternate = root . ".cpp"
-      endif
-      set nosplitright
-   endif
-
-   let command = "vsp " . alternate
-   exec command
-   let splitright = save_spr
-endfun
