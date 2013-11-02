@@ -63,12 +63,13 @@ for source in $ADDITIONAL_SOURCES; do
    fi
 done
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+if [ -e $HOME/.bash_local ]; then
+   for source in $HOME/.bash_local/*; do
+      . $source
+   done
 fi
+
+ulimit -c unlimited
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

@@ -1,0 +1,36 @@
+# vim: set ft=sh
+
+alias dlist='setenv COLUMNS 150; dpkg -l | more'
+alias dgrep='setenv COLUMNS 150; dpkg -l | grep $1'
+
+# some more ls aliases
+alias ll='ls -lF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias vi='gvim'
+alias read='source ~/.bashrc'
+
+alias matlab='/data/matlab/R2011b/bin/matlab'
+
+alias grepsvn='grep --exclude=*svn*'
+alias svngrep='grep --exclude=*svn*'
+alias svnmeld='svn diff --diff-cmd=meld'
+
+alias readogs='mysql online-go -u root -p < '
+
+
+alias fndc="find . -name '*.cpp' | xargs grep"
+alias fndh="find . -name '*.h' | xargs grep"
+alias fndch="find . -name '*.ch' | xargs grep"
+alias fnd="find . -regex '.*\(cpp\|c\|h\|ch\)' | xargs grep"
+
+alias ..="cd .."
+alias ...="cd ../.."
+
+alias ibg='javaws http://www.interactivebrokers.com/java/classes/ibg.jnlp'
+alias jts='/usr/lib/jvm/java-7-oracle/jre/bin/javaws http://www.interactivebrokers.com/java/classes/beta.jnlp'
+alias jtsl='java -cp jts.jar:hsqldb.jar:jcommon-1.0.12.jar:jfreechart-1.0.9.jar:jhall.jar:other.jar:rss.jar -Xmx512M -XX:MaxPermSize=128M jclient.LoginFrame .'
+
+export NUMCPUS=`grep -c '^processor' /proc/cpuinfo`
+alias make='time nice make -j$NUMCPUS --load-average=$NUMCPUS'
