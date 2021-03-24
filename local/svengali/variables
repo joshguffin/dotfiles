@@ -1,6 +1,0 @@
-# vim: ft=sh
-
-export SVN_EDITOR=/opt/vim/bin/vim
-
-export CPPROOT=/home/guffin/dev
-export CSCOPE_DB=$CPPROOT/cscope.out

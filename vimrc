@@ -1,26 +1,4 @@
 set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-" required for Vundle
-Bundle 'gmarik/vundle'
-
-Bundle 'pangloss/vim-javascript'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/syntastic'
-
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-filetype plugin on
-filetype indent on
-
-call pathogen#infect()
 
 set grepprg=grep\ -nH\ $*
 
@@ -151,7 +129,7 @@ if has("gui_running")
     " use console dialogues instead of popups
     set guioptions+=c
     set sh=bash
-    color zenburn
+    "color zenburn
     "color rainbow_sea
     map ,xt :!bash -ic "gnome-terminal . &" <C-L><C-L>
     map ,ex :!bash -ic "nautilus . &" <C-L><C-L>
@@ -179,9 +157,9 @@ let highlight_sedtabs = 0
 syntax on
 syntax sync minlines=200
 set expandtab
-set ts=3
-set sw=3
-set tw=80
+set ts=4
+set sw=4
+set tw=120
 set nospell
 set number
 

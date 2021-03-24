@@ -39,33 +39,6 @@ done
 /bin/echo -e "\nFinished linking files!"
 
 ################################################################################
-## VIM setup
-################################################################################
-
-mkdir -p $HOME/.vim/autoload
-mkdir -p $HOME/.vim/bundle;
-
-## Install vundle
-if [ ! -e $HOME/.vim/bundle/vundle ]; then
-   git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-fi
-
-## set up configured vundles
-vim +BundleInstall +qall
-
-## Install pathogen
-if [ ! -e $HOME/.vim/autoload/pathogen.vim ]; then
-curl -so ~/.vim/autoload/pathogen.vim \
-    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-fi
-
-## Install syntastic
-if [ ! -e $HOME/.vim/bundle/syntastic ]; then
-   git clone https://github.com/scrooloose/syntastic.git \
-      $HOME/.vim/bundle/syntastic
-fi
-
-################################################################################
 ## Local setup if requested
 ################################################################################
 
