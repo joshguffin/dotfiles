@@ -5,6 +5,8 @@
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+export LESS=XR
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -44,6 +46,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias ftp="/bin/ftp -p -i"
+
 ################################################################################
 # If this is an xterm set the title to user@host:dir
 ################################################################################
@@ -71,5 +75,11 @@ fi
 
 ulimit -c unlimited
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH=\
+:$HOME/bin\
+:$HOME/.local/bin\
+:/bin\
+:/usr/sbin\
+:/usr/bin\
+:/usr/local/sbin\
+:/usr/local/bin\
