@@ -8,3 +8,6 @@
 	excludesfile = /home/guffin/.gitexcludes
 [color]
 	ui = true
+[alias]
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	fuck = reset HEAD --hard
